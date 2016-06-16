@@ -28,6 +28,7 @@ import Adafruit_GPIO.Platform as Platform
 
 
 class TestRPi_PWM_Adapter(unittest.TestCase):
+
     def test_setup(self):
         rpi_gpio = Mock()
         pwm = PWM.RPi_PWM_Adapter(rpi_gpio)
@@ -57,6 +58,7 @@ class TestRPi_PWM_Adapter(unittest.TestCase):
 
 
 class TestBBIO_PWM_Adapter(unittest.TestCase):
+
     def test_setup(self):
         bbio_pwm = Mock()
         pwm = PWM.BBIO_PWM_Adapter(bbio_pwm)
@@ -86,6 +88,7 @@ class TestBBIO_PWM_Adapter(unittest.TestCase):
 
 
 class TestGetPlatformPWM(unittest.TestCase):
+
     @patch.dict('sys.modules', {'RPi': Mock(), 'RPi.GPIO': Mock()})
     @patch('Adafruit_GPIO.Platform.platform_detect', Mock(return_value=Platform.RASPBERRY_PI))
     def test_raspberrypi(self):

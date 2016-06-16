@@ -23,6 +23,7 @@ import Adafruit_GPIO as GPIO
 
 
 class MockGPIO(GPIO.BaseGPIO):
+
     def __init__(self):
         self.pin_mode = {}
         self.pin_written = {}

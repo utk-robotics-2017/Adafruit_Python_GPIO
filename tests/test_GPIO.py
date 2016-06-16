@@ -31,6 +31,7 @@ from MockGPIO import MockGPIO
 
 
 class TestBaseGPIO(unittest.TestCase):
+
     def test_set_high_and_set_low(self):
         gpio = MockGPIO()
         gpio.set_high(1)
@@ -52,6 +53,7 @@ class TestBaseGPIO(unittest.TestCase):
 
 
 class TestRPiGPIOAdapter(unittest.TestCase):
+
     def test_setup(self):
         rpi_gpio = Mock()
         adapter = GPIO.RPiGPIOAdapter(rpi_gpio)
@@ -133,6 +135,7 @@ class TestRPiGPIOAdapter(unittest.TestCase):
 
 
 class TestAdafruitBBIOAdapter(unittest.TestCase):
+
     def test_setup(self):
         bbio_gpio = Mock()
         adapter = GPIO.AdafruitBBIOAdapter(bbio_gpio)
@@ -211,6 +214,7 @@ class TestAdafruitBBIOAdapter(unittest.TestCase):
 
 
 class TestGetPlatformGPIO(unittest.TestCase):
+
     @patch.dict('sys.modules', {'RPi': Mock(), 'RPi.GPIO': Mock()})
     @patch('Adafruit_GPIO.Platform.platform_detect', Mock(return_value=Platform.RASPBERRY_PI))
     def test_raspberrypi(self):

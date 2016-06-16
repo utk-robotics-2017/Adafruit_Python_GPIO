@@ -26,6 +26,7 @@ import Adafruit_GPIO.Platform as Platform
 
 
 class TestPlatformDetect(unittest.TestCase):
+
     @patch('platform.platform', Mock(return_value='Linux-3.8.13-bone47-armv7l-with-debian-7.4'))
     def test_beaglebone_black(self):
         result = Platform.platform_detect()
@@ -38,6 +39,7 @@ class TestPlatformDetect(unittest.TestCase):
 
 
 class TestPiRevision(unittest.TestCase):
+
     def test_revision_1(self):
         with patch('__builtin__.open') as mock_open:
             handle = mock_open.return_value.__enter__.return_value
@@ -67,4 +69,3 @@ class TestPiRevision(unittest.TestCase):
             handle = mock_open.return_value.__enter__.return_value
             handle.__iter__.return_value = iter(['foobar'])
             self.assertRaises(RuntimeError, Platform.pi_revision)
-
